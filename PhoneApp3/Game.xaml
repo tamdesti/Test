@@ -1,0 +1,59 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PhoneApp3.Game"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="colorStoryboard">
+            <ColorAnimation BeginTime="00:00:00" Storyboard.TargetName="resetbtn" 
+        Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+        From="Red" To="Green" Duration="0:0:4" />
+
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+
+        <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBox Name="recordtxt" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="70" Text="" TextAlignment="Center" Foreground="Red" Margin="0,80"></TextBox>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Width="150" Text="Scores:" TextAlignment="Center" Margin="-220,0,0,0"></TextBlock>
+            <TextBox Name="scoretxt" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="70" Width="150" Text="0" TextAlignment="Center" Foreground="Red"></TextBox>
+            <Button Name="resetbtn" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Reset" Margin="300,0,0,0" Click="ResetRecord"></Button>
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
