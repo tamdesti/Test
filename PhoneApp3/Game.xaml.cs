@@ -27,59 +27,85 @@ namespace PhoneApp3
         {
             InitializeComponent();
             AddButton();
-            checkIT(-1,-1);
+            checkIT(-1, -1);
         }
-        public void checkIT(int a,int b)
+        public void checkIT(int a, int b)
         {
-            for (int i=0; i<8; i++)
+            for (int i = 0; i < 8; i++)
                 for (int j = 0; j < 6; j++)
-                    checkRow(i*8 + j, 1);
+                    checkRow(i * 8 + j, 1);
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 8; j++)
                     checkCol(i * 8 + j, 1);
-            changecolor(a,b);
+            changecolor(a, b);
         }
         bool change = false;
 
-        void animationColor(String btnName)
+        void animationColor(Button btn)
         {
-            ColorAnimation colorAnimation = new ColorAnimation();
-            colorAnimation.From = Colors.Red;
-            colorAnimation.To = Colors.Green;
-            colorAnimation.Duration = TimeSpan.FromSeconds(1);
-            Storyboard.SetTargetName(colorAnimation, recordtxt.Name);
-            Storyboard.SetTargetProperty(colorAnimation, new PropertyPath(SolidColorBrush.ColorProperty));
-            Storyboard mouseEnterStoryboard = new Storyboard();
-            mouseEnterStoryboard.Children.Add(colorAnimation);
-            mouseEnterStoryboard.Begin();
-            //DoubleAnimation d = new DoubleAnimation();
+            // Create and define animation
+            DoubleAnimation anima = new DoubleAnimation();
+            anima.From = 1;
+            anima.To = 0;
+            anima.Duration = new Duration(TimeSpan.FromSeconds(3));
+            // Set attached properties
+            //Storyboard.SetTargetName(anima, btn.Name);
+            Storyboard.SetTarget(anima, btn);
+            Storyboard.SetTargetProperty(anima, new PropertyPath("(Opacity)"));
+            // Create storyboard, add animation, and fire it up!
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(anima);
+            storyboard.Begin();
         }
-        public void changecolor(int a,int b)
+        void animationColor1(Button btn)
+        {
+            // Create and define animation
+            DoubleAnimation anima = new DoubleAnimation();
+            anima.From = 0;
+            anima.To = 1;
+            anima.Duration = new Duration(TimeSpan.FromSeconds(3));
+            // Set attached properties
+            //Storyboard.SetTargetName(anima, btn.Name);
+            Storyboard.SetTarget(anima, btn);
+            Storyboard.SetTargetProperty(anima, new PropertyPath("(Opacity)"));
+            // Create storyboard, add animation, and fire it up!
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(anima);
+            storyboard.Begin();
+        }
+        public void changecolor(int a, int b)
         {
             String S = "";
-            int n=8;
-            for (int i=0; i<n; i++)
+            int n = 8;
+            int count = 0;
+            for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                 {
                     if (delList[i * 8 + j])
                     {
                         delList[i * 8 + j] = false;
                         Button btn = Arraybtn[i * 8 + j];
+                        S += i * 8 + j;
+                        S += ((SolidColorBrush)btn.Background).Color.ToString();
+                        animationColor(btn);
                         setBackground4button(ref btn);
-                        if (a!= -1)
-                        animationColor(btn.Name);
-                        Arraybtn[i * 8 + j] = btn;
+                        animationColor1(btn);
+                        if (a != -1)
+                            Arraybtn[i * 8 + j] = btn;
                         Scores++;
                         change = true;
-                        S += (i * 8 + j).ToString() + " ";
+                        count++;
+                        //S += (i * 8 + j).ToString() + " ";
                     }
                 }
             scoretxt.Text = Scores.ToString();
+            //(Convert.ToInt16(recordtxt.Text) + count).ToString();
             if (change)
             {
                 change = false;
                 checkIT(-1, -1);
-                recordtxt.Text += S;
+                //recordtxt.Text += S;
+                MessageBox.Show(S + "  " + count.ToString());
             }
             else
                 if (a != -1)
@@ -118,8 +144,8 @@ namespace PhoneApp3
         }
         public void AddButton()
         {
-            int n=8;
-            for (int i=0; i<n; i++)
+            int n = 8;
+            for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                 {
                     delList.Add(false);
@@ -129,7 +155,7 @@ namespace PhoneApp3
                     newbtn.Width = 70;
                     newbtn.HorizontalAlignment = HorizontalAlignment.Left;
                     newbtn.VerticalAlignment = VerticalAlignment.Top;
-                    newbtn.Margin = new Thickness(50*j, 50*i, 10, 10);
+                    newbtn.Margin = new Thickness(50 * j, 50 * i, 10, 10);
                     newbtn.Click += new RoutedEventHandler(newbtn_Click);
                     setBackground4button(ref newbtn);
                     Arraybtn.Add(newbtn);
@@ -151,7 +177,7 @@ namespace PhoneApp3
             {
                 int indexbtnswap = Arraybtn.IndexOf(btn);
                 haschoice = false;
-                if (indexbtnswap == IndexbtnChoice || !Keben(indexbtnswap,IndexbtnChoice))
+                if (indexbtnswap == IndexbtnChoice || !Keben(indexbtnswap, IndexbtnChoice))
                 {
                     Arraybtn[IndexbtnChoice].Background = color;
                     return;
@@ -159,7 +185,7 @@ namespace PhoneApp3
                 SolidColorBrush swapcolor = (SolidColorBrush)Arraybtn[indexbtnswap].Background;
                 Arraybtn[IndexbtnChoice].Background = swapcolor;
                 Arraybtn[indexbtnswap].Background = color;
-                checkIT(indexbtnswap,IndexbtnChoice);
+                checkIT(indexbtnswap, IndexbtnChoice);
             }
         }
         bool Keben(int a, int b)
@@ -168,7 +194,7 @@ namespace PhoneApp3
             if (b == a + 8 || b == a + 1) return true;
             return false;
         }
-        
+
         void checkRow(int index, int totalBlock)
         {
             if (index % 8 != 7 && (((SolidColorBrush)Arraybtn[index + 1].Background).Color == ((SolidColorBrush)Arraybtn[index].Background).Color))
@@ -191,7 +217,7 @@ namespace PhoneApp3
                 {
                     for (int i = 0; i < totalBlock; i++)
                     {
-                        delList[index - i*8] = true;
+                        delList[index - i * 8] = true;
                     }
                 }
 
@@ -200,7 +226,7 @@ namespace PhoneApp3
         private void ResetRecord(object sender, RoutedEventArgs e)
         {
             recordtxt.Text = "";
-            colorStoryboard.Begin();
+            //colorStoryboard.Begin();
         }
     }
 }

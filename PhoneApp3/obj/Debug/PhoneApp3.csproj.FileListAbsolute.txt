@@ -11,3 +11,16 @@ c:\users\tamdesti\documents\visual studio 2010\Projects\PhoneApp3\PhoneApp3\obj\
 c:\users\tamdesti\documents\visual studio 2010\Projects\PhoneApp3\PhoneApp3\obj\Debug\PhoneApp3.pdb
 c:\users\tamdesti\documents\visual studio 2010\Projects\PhoneApp3\PhoneApp3\obj\Debug\XapCacheFile.xml
 C:\Users\TamDesti\Documents\Visual Studio 2010\Projects\PhoneApp3\PhoneApp3\obj\Debug\Game.g.i.cs
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\ApplicationIcon.png
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\Background.png
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\PhoneApp3.dll
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\PhoneApp3.pdb
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\AppManifest.xaml
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\Bin\Debug\PhoneApp3.xap
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\App.g.i.cs
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\Game.g.i.cs
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\MainPage.g.i.cs
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\PhoneApp3.g.resources
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\PhoneApp3.dll
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\PhoneApp3.pdb
+C:\Users\TamDesti\Google Drive\Windows Phone Project\Test\PhoneApp3\obj\Debug\XapCacheFile.xml
